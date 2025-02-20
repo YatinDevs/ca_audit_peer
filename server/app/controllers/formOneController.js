@@ -148,6 +148,28 @@ exports.createFormOne = async (req, res) => {
   }
 };
 
+// Create Form 1 Entry
+exports.createFormOne = async (req, res) => {
+  try {
+    const data = req.body;
+
+    writeStream.on("finish", () => {
+      res.download(pdfPath, "Form1_Application.pdf", (err) => {
+        if (err) {
+          console.error("Error sending PDF:", err);
+          res
+            .status(500)
+            .json({ success: false, message: "Error generating PDF" });
+        }
+        fs.unlinkSync(pdfPath); // Delete the PDF after sending
+      });
+    });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ success: false, message: "An error occurred" });
+  }
+};
+
 // Get All Form One Entries
 exports.getAllForms = async (req, res) => {
   try {
