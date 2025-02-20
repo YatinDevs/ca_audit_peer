@@ -13,7 +13,8 @@ const sequelize = require("./utils/db");
 
 const User = require("./models/userModel");
 const Token = require("./models/tokenModel");
-const models = { User, Token };
+const FormOne = require("./models/form1Model");
+const models = { User, Token, FormOne };
 
 Object.keys(models).forEach((modelName) => {
   if (models[modelName].associate) {
@@ -47,8 +48,10 @@ app.get("/dev", (req, res) => {
 
 // Routes
 const authRoutes = require("./routes/authRoutes");
+const formOneRoutes = require("./routes/formOneRoutes");
 
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/formOne", formOneRoutes);
 
 sequelize
   .authenticate()

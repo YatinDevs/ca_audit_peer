@@ -14,6 +14,7 @@ import Dashboard from "./pages/Dashboard";
 import Signup from "./pages/Signup";
 import PageNotFound from "./pages/404/PageNotFound";
 import Form1Application from "./pages/Forms/Form1Application";
+import Form2Application from "./pages/Forms/Form2Application";
 
 function App() {
   const { checkAuth } = useAuthStore();
@@ -60,7 +61,14 @@ function App() {
             </ProtectedRoute>
           }
         />
-
+        <Route
+          path="/dashboard/peer/form1"
+          element={
+            <ProtectedRoute>
+              <Form2Application />
+            </ProtectedRoute>
+          }
+        />
         {/* 404 Page */}
         <Route path="*" element={<PageNotFound />} />
       </Route>
