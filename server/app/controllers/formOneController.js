@@ -1,3 +1,9 @@
+// const FormOne = require("../models/form1Model");
+// const PDFDocument = require("pdfkit");
+// const fs = require("fs");
+// const path = require("path");
+// const mammoth = require("mammoth");
+// const libre = require("libreoffice-convert"); // For Word to PDF conversion
 const FormOne = require("../models/form1Model");
 const PDFDocument = require("pdfkit");
 const fs = require("fs");
@@ -148,27 +154,116 @@ exports.createFormOne = async (req, res) => {
   }
 };
 
-// Create Form 1 Entry
-exports.createFormOne = async (req, res) => {
-  try {
-    const data = req.body;
+// exports.createFormOne = async (req, res) => {
+//   try {
+//     console.log("Received Data:", req.body);
+//     const data = req.body;
 
-    writeStream.on("finish", () => {
-      res.download(pdfPath, "Form1_Application.pdf", (err) => {
-        if (err) {
-          console.error("Error sending PDF:", err);
-          res
-            .status(500)
-            .json({ success: false, message: "Error generating PDF" });
-        }
-        fs.unlinkSync(pdfPath); // Delete the PDF after sending
-      });
-    });
-  } catch (error) {
-    console.error("Error:", error);
-    res.status(500).json({ success: false, message: "An error occurred" });
-  }
-};
+//     // Path to the Word template
+//     const templatePath = path.join(__dirname, "../templates/form1demo.docx");
+
+//     // Ensure the output directory exists
+//     const outputFolder = path.join(__dirname, "../output");
+//     if (!fs.existsSync(outputFolder)) {
+//       fs.mkdirSync(outputFolder, { recursive: true });
+//     }
+
+//     // Read the Word file
+//     const templateBuffer = fs.readFileSync(templatePath);
+
+//     // Extract text from the DOCX file
+//     mammoth
+//       .extractRawText({ buffer: templateBuffer })
+//       .then((result) => {
+//         let content = result.value; // Extracted text as plain text
+
+//         // Replace placeholders with actual data
+//         content = content
+//           .replace(/{{firmname}}/g, data.firmName || "________")
+//           .replace(/{{frn}}/g, data.frn || "________")
+//           .replace(/{{reviewStartDate}}/g, data.reviewStartDate || "________")
+//           .replace(/{{reviewEndDate}}/g, data.reviewEndDate || "________")
+//           .replace(/{{email}}/g, data.email || "________")
+//           .replace(/{{address}}/g, data.address || "________")
+//           .replace(/{{mandatoryICAI}}/g, data.mandatoryICAI ? "✓" : "⬜")
+//           .replace(/{{mandatoryOther}}/g, data.mandatoryOther ? "✓" : "⬜")
+//           .replace(/{{voluntary}}/g, data.voluntary ? "✓" : "⬜")
+//           .replace(/{{specialCase}}/g, data.specialCase ? "✓" : "⬜")
+//           .replace(/{{newUnit}}/g, data.newUnit ? "✓" : "⬜")
+//           .replace(/{{boardDecision}}/g, data.boardDecision ? "✓" : "⬜")
+//           .replace(
+//             /{{centralStatutoryAudit}}/g,
+//             data.centralStatutoryAudit || "N/A"
+//           )
+//           .replace(/{{statutoryAudit}}/g, data.statutoryAudit || "N/A")
+//           .replace(/{{internalAudit}}/g, data.internalAudit || "N/A")
+//           .replace(/{{taxAudit}}/g, data.taxAudit || "N/A")
+//           .replace(/{{concurrentAudit}}/g, data.concurrentAudit || "N/A")
+//           .replace(/{{certificationWork}}/g, data.certificationWork || "N/A")
+//           .replace(/{{otherAssurance}}/g, data.otherAssurance || "N/A")
+//           .replace(
+//             /{{conductedAudit}}/g,
+//             data.conductedAudit ? "Conducted" : "Not Conducted"
+//           )
+//           .replace(/{{sameCity}}/g, data.sameCity ? "✓" : "⬜")
+//           .replace(/{{outsideCity}}/g, data.outsideCity ? "✓" : "⬜")
+//           .replace(/{{eitherOption}}/g, data.eitherOption ? "✓" : "⬜")
+//           .replace(/{{preferredCity}}/g, data.preferredCity || "N/A");
+
+//         // Path for output text file (since mammoth only extracts text)
+//         const outputTextPath = path.join(outputFolder, "Generated_Form1.txt");
+//         fs.writeFileSync(outputTextPath, content);
+
+//         // Convert the text file to PDF
+//         const outputPdfPath = path.join(outputFolder, "Generated_Form1.pdf");
+//         libre.convert(
+//           fs.readFileSync(outputTextPath),
+//           ".pdf",
+//           undefined,
+//           (err, pdfBuffer) => {
+//             if (err) {
+//               console.error("Error converting to PDF:", err);
+//               return res
+//                 .status(500)
+//                 .json({ success: false, message: "PDF conversion failed" });
+//             }
+
+//             fs.writeFileSync(outputPdfPath, pdfBuffer);
+
+//             // Send the PDF as a response using a stream
+//             res.setHeader(
+//               "Content-Disposition",
+//               "attachment; filename=Generated_Form1.pdf"
+//             );
+//             res.setHeader("Content-Type", "application/pdf");
+//             const fileStream = fs.createReadStream(outputPdfPath);
+//             fileStream.pipe(res);
+
+//             fileStream.on("end", () => {
+//               fs.unlinkSync(outputTextPath);
+//               fs.unlinkSync(outputPdfPath);
+//             });
+
+//             fileStream.on("error", (error) => {
+//               console.error("Error streaming PDF:", error);
+//               res
+//                 .status(500)
+//                 .json({ success: false, message: "Error sending PDF" });
+//             });
+//           }
+//         );
+//       })
+//       .catch((error) => {
+//         console.error("Error processing template:", error);
+//         res
+//           .status(500)
+//           .json({ success: false, message: "Template processing error" });
+//       });
+//   } catch (error) {
+//     console.error("Error:", error);
+//     res.status(500).json({ success: false, message: "An error occurred" });
+//   }
+// };
 
 // Get All Form One Entries
 exports.getAllForms = async (req, res) => {

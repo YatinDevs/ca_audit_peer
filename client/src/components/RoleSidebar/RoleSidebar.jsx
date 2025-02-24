@@ -82,77 +82,76 @@ const sidebars = {
       label: "Manage Employees",
       icon: Users,
       subMenu: [
-        { label: "Add New Employee", link: "/dashboard/employees/add" },
-        { label: "Employee List", link: "/dashboard/employees/list" },
-        { label: "Manage Attendance", link: "/dashboard/employees/attend" },
-        { label: "Leave Requests", link: "/dashboard/employees/leave" },
+        {
+          label: "Add New Employee",
+          link: "/dashboard/employees/add",
+          icon: ClipboardList,
+        },
+        {
+          label: "Employee List",
+          link: "/dashboard/employees/list",
+          icon: ClipboardList,
+        },
+        {
+          label: "Manage Attendance",
+          link: "/dashboard/employees/attend",
+          icon: ClipboardList,
+        },
+        {
+          label: "Leave Requests",
+          link: "/dashboard/employees/leave",
+          icon: ClipboardList,
+        },
       ],
     },
     {
       label: "Manage Clients",
       icon: Briefcase,
       subMenu: [
-        { label: "Client Onboard", link: "/dashboard/clients/add" },
-        { label: "Client List", link: "/dashboard/clients/list" },
+        {
+          label: "Client Onboard",
+          link: "/dashboard/clients/add",
+          icon: ClipboardList,
+        },
+        {
+          label: "Client List",
+          link: "/dashboard/clients/list",
+          icon: ClipboardList,
+        },
       ],
     },
     {
       label: "Manage Service",
       icon: Briefcase,
       subMenu: [
-        { label: "Add Service", link: "/dashboard/services/add" },
-        { label: "Service List", link: "/dashboard/services/list" },
+        {
+          label: "Add Service",
+          link: "/dashboard/services/add",
+          icon: ClipboardList,
+        },
+        {
+          label: "Service List",
+          link: "/dashboard/services/list",
+          icon: ClipboardList,
+        },
       ],
     },
     {
       label: "Manage Tasks",
       icon: ClipboardList,
       subMenu: [
-        { label: "Assign Task", link: "tasks/assign" },
-        { label: "Task List", link: "tasks/list" },
+        { label: "Assign Task", link: "tasks/assign", icon: ClipboardList },
+        { label: "Task List", link: "tasks/list", icon: ClipboardList },
       ],
     },
-    {
-      label: "Invoices & Billing",
-      icon: FileText,
-      subMenu: [
-        { label: "Generate Porforma", link: "/dashboard/accounts/invoice" },
-        { label: "Create Invoice", link: "invoices/create" },
-        { label: "Invoices", link: "/dashboard/accounts/get" },
-      ],
-    },
-    {
-      label: "Payroll Management",
-      icon: Banknote,
-      subMenu: [
-        { label: "Generate Payroll", link: "payroll/generate" },
-        { label: "Payroll History", link: "payroll/history" },
-      ],
-    },
-    {
-      label: "Expense Management",
-      icon: Receipt,
-      subMenu: [
-        { label: "Add Expense", link: "expenses/add" },
-        { label: "View Expenses", link: "expenses/list" },
-      ],
-    },
+
     {
       label: "Support",
       icon: LifeBuoy,
       subMenu: [
-        { label: "View Tickets", link: "tickets" },
-        { label: "Client Issues", link: "issues" },
-        { label: "Knowledge Base", link: "knowledge" },
-      ],
-    },
-    {
-      label: "Sales",
-      icon: BarChart,
-      subMenu: [
-        { label: "Leads", link: "leads" },
-        { label: "Deals", link: "deals" },
-        { label: "Reports", link: "reports" },
+        { label: "View Tickets", link: "tickets", icon: ClipboardList },
+        { label: "Client Issues", link: "issues", icon: ClipboardList },
+        { label: "Knowledge Base", link: "knowledge", icon: ClipboardList },
       ],
     },
   ],
