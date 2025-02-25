@@ -53,6 +53,8 @@ const formNineRoutes = require("./routes/formNineRoutes");
 const formEightRoutes = require("./routes/formEightRoutes");
 const formSevenRoutes = require("./routes/formSevenRoutes");
 const formSixRoutes = require("./routes/formSixRoutes");
+const formFiveRoutes = require("./routes/formFiveRoutes");
+const formThreeRoutes = require("./routes/formThreeRoutes");
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/formOne", formOneRoutes);
@@ -60,6 +62,8 @@ app.use("/api/v1/formNine", formNineRoutes);
 app.use("/api/v1/formEight", formEightRoutes);
 app.use("/api/v1/formSeven", formSevenRoutes);
 app.use("/api/v1/formSix", formSixRoutes);
+app.use("/api/v1/formFive", formFiveRoutes);
+app.use("/api/v1/formThree", formThreeRoutes);
 
 sequelize
   .authenticate()
