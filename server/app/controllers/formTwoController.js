@@ -1,13 +1,13 @@
 const PDFDocument = require("pdfkit");
 const fs = require("fs");
 const path = require("path");
-const generateFormOnePDF = require("../utils/generateForm1");
+const generateFormTwoPDF = require("../utils/generateForm2");
 
-exports.createFormOne = async (req, res) => {
+exports.createFormTwo = async (req, res) => {
   try {
     const data = req.body;
 
-    generateFormOnePDF(data, (err, pdfPath) => {
+    generateFormTwoPDF(data, (err, pdfPath) => {
       if (err) {
         console.error("Error generating PDF:", err);
         return res

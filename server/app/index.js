@@ -14,7 +14,9 @@ const sequelize = require("./utils/db");
 const User = require("./models/userModel");
 const Token = require("./models/tokenModel");
 const FormOne = require("./models/form1Model");
-const models = { User, Token, FormOne };
+const FormTwo = require("./models/formTwoModel");
+
+const models = { User, Token, FormOne, FormTwo };
 
 Object.keys(models).forEach((modelName) => {
   if (models[modelName].associate) {
@@ -55,6 +57,7 @@ const formSevenRoutes = require("./routes/formSevenRoutes");
 const formSixRoutes = require("./routes/formSixRoutes");
 const formFiveRoutes = require("./routes/formFiveRoutes");
 const formThreeRoutes = require("./routes/formThreeRoutes");
+const formTwoRoutes = require("./routes/formTwoRoutes");
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/formOne", formOneRoutes);
@@ -64,6 +67,7 @@ app.use("/api/v1/formSeven", formSevenRoutes);
 app.use("/api/v1/formSix", formSixRoutes);
 app.use("/api/v1/formFive", formFiveRoutes);
 app.use("/api/v1/formThree", formThreeRoutes);
+app.use("/api/v1/formTwo", formTwoRoutes);
 
 sequelize
   .authenticate()
