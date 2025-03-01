@@ -110,13 +110,13 @@ const generateFormEightPDF = (data, callback) => {
       { align: "justify", width: contentWidth }
     );
 
-    doc.moveDown(3);
-    doc.text("Thanking You,", { align: "left", width: contentWidth });
     doc.moveDown(2);
+    doc.text("Thanking You,", { align: "left", width: contentWidth });
+    doc.moveDown(1);
 
     // SIGNATURE
     doc.text("Yours faithfully,", { align: "left", width: contentWidth });
-    doc.moveDown(2);
+    doc.moveDown(0.5);
     doc.text("Signature: ______________________", {
       align: "left",
       width: contentWidth,

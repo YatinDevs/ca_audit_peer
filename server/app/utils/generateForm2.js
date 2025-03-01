@@ -37,7 +37,7 @@ const generateFormTwoPDF = (data, callback) => {
         width: contentWidth,
       });
 
-    doc.moveDown(5);
+    doc.moveDown(1);
 
     // ADDRESSING TO PRACTICE UNIT
     doc
@@ -52,27 +52,39 @@ const generateFormTwoPDF = (data, callback) => {
         width: contentWidth,
       });
 
-    doc.moveDown(3);
+    doc.moveDown(1);
 
     // INTRODUCTORY STATEMENT
     doc
       .font("Helvetica")
       .text("Sir,", { align: "left", width: contentWidth })
-      .moveDown(2);
+      .moveDown(1);
 
-    doc.text(
-      `(A) With reference to selection of my name for conducting peer review of M/s/CA. ${data.firmName}, FRN/Mem.No.: ${data.frn}, I hereby convey my acceptance for the same.`,
-      { align: "justify", width: contentWidth }
-    );
+      doc
+  .font("Helvetica-Bold")
+  .text("(A)   ", { continued: true }) // Adds tab spaces after "(A)"
+  .font("Helvetica")
+  .text(
+    "With reference to selection of my name for conducting peer review of           M/s/CA. " +
+      `${data.firmName}, FRN/Mem.No.: ${data.frn}, I hereby convey my acceptance for the same.`,
+    { align: "justify", width: contentWidth }
+  );
 
-    doc.moveDown(2);
+    
 
-    doc.text(
-      `(B) I also hereby declare that I am aware of the need for confidentiality in the conduct of peer reviews. I undertake and promise that in so far as any or all of the following relate to me or are brought to my knowledge/attention, in any manner whatsoever and when so ever, I shall ensure that:`,
-      { align: "justify", width: contentWidth }
-    );
+    doc.moveDown(1);
 
-    doc.moveDown();
+    doc
+  .font("Helvetica-Bold")
+  .text("(B)   ", { continued: true }) // Adds spaces after "(B)"
+  .font("Helvetica")
+  .text(
+    "I also hereby declare that I am aware of the need for confidentiality in the conduct of peer reviews. I undertake and promise that in so far as any or all of the following relate to me or are brought to my knowledge/attention, in any manner whatsoever and when so ever, I shall ensure that:",
+    { align: "justify", width: contentWidth }
+  );
+
+
+    doc.moveDown(1);
 
     // LIST OF CONFIDENTIALITY CONDITIONS
     const conditions = [
@@ -91,6 +103,7 @@ const generateFormTwoPDF = (data, callback) => {
 
     const leftMargin = doc.page.margins.left + 10;
     const bulletSymbol = "•"; // Unicode bullet character
+    
 
     conditions.forEach((item) => {
       doc.text(`${bulletSymbol}`, leftMargin, doc.y, { continued: true });
@@ -101,14 +114,14 @@ const generateFormTwoPDF = (data, callback) => {
       doc.moveDown(0.5);
     });
 
-    doc.moveDown(2);
+    doc.moveDown(1);
 
     doc.text(
       `I understand that any breach of these confidentiality provisions will be considered as gross negligence and may make me liable for disciplinary action.`,
       { align: "justify", width: contentWidth }
     );
 
-    doc.moveDown(3);
+    doc.moveDown(1);
 
     // APPOINTMENT CONFIRMATION
     doc
@@ -126,57 +139,76 @@ const generateFormTwoPDF = (data, callback) => {
         { align: "justify", width: contentWidth }
       );
 
-    doc.moveDown(3);
+    doc.moveDown(1);
 
     // SIGNATURE SECTION
-    doc.text("Regards,", { align: "left", width: contentWidth });
-    doc.moveDown();
-    doc.text("Signature: ______________________", {
-      align: "left",
-      width: contentWidth,
-    });
+doc
+.font("Helvetica-Bold")
+.text("Regards,", { align: "left", width: contentWidth });
 
-    doc.moveDown(0.5);
-    doc.text(`Name : ${data.partnerName}`, {
-      align: "left",
-      width: contentWidth,
-    });
+doc.moveDown(1);
 
-    doc.moveDown(0.5);
-    doc.text(`Membership No.: ${data.memberShipNo}`, {
-      align: "left",
-      width: contentWidth,
-    });
+doc
+.text("Signature:", { align: "left", width: contentWidth, continued: true })
+.font("Helvetica")
+.text(" ______________________");
 
-    doc.moveDown(0.5);
-    doc.text(`Email ID: ${data.email}`, {
-      align: "left",
-      width: contentWidth,
-    });
 
-    doc.moveDown(0.5);
-    doc.text(`Mobile No.: ${data.mobile}`, {
-      align: "left",
-      width: contentWidth,
-    });
+doc.moveDown(1);
+doc.text(`Name : ${data.partnerName}`, {
+align: "left",
+width: contentWidth,
+});
 
-    doc.moveDown(0.5);
-    doc.text(`Period of Review: ${data.periodOfReview}`, {
-      align: "left",
-      width: contentWidth,
-    });
+doc.moveDown(0.5);
+doc.text(`Membership No.: ${data.memberShipNo}`, {
+align: "left",
+width: contentWidth,
+});
 
-    doc.moveDown(0.5);
-    doc.text(`Date: ${data.date}`, {
-      align: "left",
-      width: contentWidth,
-    });
+doc.moveDown(1);
+doc.text(`Email ID: ${data.email}`, {
+align: "left",
+width: contentWidth,
+});
 
-    doc.moveDown(0.5);
-    doc.text(`Place: ${data.place}`, {
-      align: "left",
-      width: contentWidth,
-    });
+
+doc.moveDown(0.5);
+doc.text(`Mobile No.: ${data.mobile}`, {
+align: "left",
+width: contentWidth,
+});
+
+doc.moveUp[0.5];
+doc.moveDown(0.5);
+doc.text(`Period of Review: ${data.periodOfReview}`, {
+align: "left",
+width: contentWidth,
+});
+
+
+doc.moveDown(0.5);
+doc.text(`Date: ${data.date}`, {
+align: "left",
+width: contentWidth,
+});
+
+
+doc.moveDown(0.5);
+doc.text(`Place: ${data.place}`, {
+align: "left",
+width: contentWidth,
+});
+
+// Add only 1 line space before the Note section
+doc.moveDown(1);
+
+doc
+.font("Helvetica-Bold")
+.text("Note:", { align: "left", width: contentWidth, continued: true })
+.font("Helvetica")
+.text(" To be submitted on Mail ID : …… (Email ID of PU)");
+
 
     doc.end();
 

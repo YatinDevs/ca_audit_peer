@@ -115,7 +115,7 @@ const generateFormNinePDF = (data, callback) => {
       { align: "justify", width: contentWidth }
     );
 
-    doc.moveDown(3);
+    doc.moveDown(0.1);
 
     // SIGNATURE
     doc.text("Regards,", { align: "left", width: contentWidth });
@@ -140,7 +140,7 @@ const generateFormNinePDF = (data, callback) => {
     doc.addPage();
 
     // HEADER FOR PRACTICE UNIT CONFIRMATION
-    doc
+    doc.moveDown(0.5)
       .fontSize(12)
       .font("Helvetica-Bold")
       .text("[To be filled by the Practice Unit]", {

@@ -27,11 +27,11 @@ const generateFormSevenPDF = (data, callback) => {
 
     doc
       .fontSize(12)
-      .text("Joint Intimation to be made by PU and RE", {
+      .text("Joint Intimation to be made by PU and RE for extension of time for", {
         align: "center",
         width: contentWidth,
       })
-      .text("for extension of time for completion of Peer Review process", {
+      .text("completion of Peer Review process", {
         align: "center",
         width: contentWidth,
       })
@@ -72,7 +72,7 @@ const generateFormSevenPDF = (data, callback) => {
     doc.moveDown(2);
 
     doc.text(
-      `Our Firm ${data.firmName}, FRN ${data.frn}, applied for Peer Review vide Application No. ${data.applicationNo} on ${data.applicationDate}.`,
+      `Our Firm ${data.firmName}, FRN ${data.frn}, Applied for Peer Review vide Application No. ${data.applicationNo} on ${data.applicationDate}.`,
       { align: "justify", width: contentWidth }
     );
 
@@ -106,14 +106,14 @@ const generateFormSevenPDF = (data, callback) => {
       { align: "justify", width: contentWidth }
     );
 
-    doc.moveDown(2);
+    doc.moveDown(0.5);
 
     doc.text(
       `We assure that the Peer Review will be completed by ${data.peerReviewCompletionDate} and the report will be submitted to the Board by ${data.reportSubmissionDate}.`,
       { align: "justify", width: contentWidth }
     );
 
-    doc.moveDown(3);
+    doc.moveDown(2);
 
     doc.text("Thanking You,", { align: "left", width: contentWidth });
     doc.moveDown(2);

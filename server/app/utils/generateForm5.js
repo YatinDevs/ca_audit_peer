@@ -146,7 +146,7 @@ const generateFormFivePDF = (data, callback) => {
     doc.moveDown(1);
     doc.text(`Date : ${data.declarationDate || "______________"}`, tableLeft);
 
-    doc.moveDown(3);
+    doc.moveDown(1);
 
     // **NEW SECTION (Font Size 10, Placed at Bottom)**
     doc

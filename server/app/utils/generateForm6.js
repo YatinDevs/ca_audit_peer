@@ -163,8 +163,9 @@ const generateFormSixPDF = (data, callback) => {
     doc.text("Signature :", tableLeft);
     doc.moveDown(1);
     doc.text(`Name : ${data.reviewerName || "________________"}`, tableLeft);
-    doc.moveDown(1);
+    doc.moveDown(0.5);
     doc.text(`Date : ${data.declarationDate || "________________"}`, tableLeft);
+ 
 
     doc.end();
 
